@@ -39,7 +39,6 @@
 	}
 </script>
 
-<h1>Button</h1>
 
 <!-- 
 {#snippet sum(a: number, b: number)}
