@@ -2,6 +2,7 @@
 	console.clear();
 	import Button from '$lib/components/Button.svelte';
 	import Counter from '$lib/components/Counter.svelte';
+	import CurrencyConverter from '$lib/components/CurrencyConverter.svelte';
 	import DisplayName from '$lib/components/DisplayName.svelte';
 	import Notification from '$lib/components/Notification.svelte';
 	import RandomNumber from '$lib/components/RandomNumber.svelte';
@@ -9,6 +10,7 @@
 	import generateNotifications from '$lib/utils/generate-notifications';
 
 	import { AlarmClock, Search } from 'lucide-svelte';
+	import { SvelteDate } from 'svelte/reactivity';
 	let button: Button;
 	$effect(() => {
 		button.getButton().focus();
@@ -106,7 +108,28 @@
 			{ value: '=SUM(D2,D3,D4,D5)', bgColor: '#8e7eb6' }
 		]
 	]);
+
+	let date = new SvelteDate();
+
+	$effect(() => {
+		const interval = setInterval(() => {
+			date.setTime(Date.now());
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
+
+<p class="date">
+	{date.getHours().toString().padStart(2, '0')}:{date
+		.getMinutes()
+		.toString()
+		.padStart(2, '0')}:{date.getSeconds().toString().padStart(2, '0')}
+</p>
+
+<CurrencyConverter />
 
 <Sheet bind:data />
 
@@ -133,7 +156,8 @@
 		<p>No notifications</p>
 	{/each}
 </ul>
-<!-- <h2>{object.firstName}</h2>
+
+<h2>{object.firstName}</h2>
 <h2>{object.address.city}</h2>
 
 <input bind:value={object.firstName} />
@@ -152,7 +176,7 @@
 	}}
 >
 	Log</button
-> -->
+>
 
 <DisplayName />
 

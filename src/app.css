@@ -7,7 +7,27 @@
 	--code-bg: #161b22;
 	--font-sans: monospace, Arial, sans-serif;
 }
-
+.date {
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: #0d1117;
+	border-radius: 0.25em;
+	display: grid;
+	font-family: monospace;
+	font-size: 1rem;
+	padding: 1em 2em;
+	background: #0f1824;
+	color: #cacaca;
+}
+body,
+select,
+option,
+input,
+textarea,
+button {
+	font-family: var(--font-sans);
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -15,7 +35,6 @@
 }
 
 body {
-	font-family: var(--font-sans);
 	background-color: var(--bg);
 	color: var(--text);
 	line-height: 1.6;
@@ -67,12 +86,6 @@ ol {
 }
 
 code {
-	font-family:
-		SFMono-Regular,
-		Consolas,
-		Liberation Mono,
-		Menlo,
-		monospace;
 	background-color: var(--code-bg);
 	padding: 0.2em 0.4em;
 	border-radius: 6px;
@@ -119,4 +132,10 @@ td {
 th {
 	background-color: #161b22;
 	color: var(--text);
+}
+select,
+option {
+	background-color: var(--code-bg); /* dark */
+	color: var(--text); /* light */
+	font-size: 1em;
 }
