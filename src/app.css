@@ -26,6 +26,8 @@ option,
 input,
 textarea,
 button {
+	justify-content: center;
+	align-items: center;
 	font-family: var(--font-sans);
 }
 * {

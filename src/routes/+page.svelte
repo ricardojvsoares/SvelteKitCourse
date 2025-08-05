@@ -1,17 +1,20 @@
 <script lang="ts">
-	console.clear();
+	import { browser } from '$app/environment';
 	import Button from '$lib/components/Button.svelte';
+	import ClickToCount from '$lib/components/ClickToCount.svelte';
 	import Counter from '$lib/components/Counter.svelte';
 	import CurrencyConverter from '$lib/components/CurrencyConverter.svelte';
 	import DisplayName from '$lib/components/DisplayName.svelte';
+	import DoubleClickToCount from '$lib/components/DoubleClickToCount.svelte';
 	import Notification from '$lib/components/Notification.svelte';
 	import RandomNumber from '$lib/components/RandomNumber.svelte';
 	import Sheet from '$lib/components/sheet/Sheet.svelte';
 	import generateNotifications from '$lib/utils/generate-notifications';
+	import { on } from 'svelte/events';
 
 	import { AlarmClock, Search } from 'lucide-svelte';
-	import { SvelteDate } from 'svelte/reactivity';
-	let button: Button;
+	import { createSubscriber, SvelteDate } from 'svelte/reactivity';
+	/* let button: Button;
 	$effect(() => {
 		button.getButton().focus();
 	});
@@ -119,8 +122,20 @@
 		return () => {
 			clearInterval(interval);
 		};
-	});
+	}); */
+
+
+	import scrollY from '$lib/utils/scroll-y.svelte';
 </script>
+
+<h1 style="position: fixed;top:100px">{scrollY.current}</h1>
+<div style="height: 2000px;"></div>
+
+<!-- 
+<ClickToCount />
+
+<DoubleClickToCount />
+
 
 <p class="date">
 	{date.getHours().toString().padStart(2, '0')}:{date
@@ -220,7 +235,7 @@
 		{/snippet}
 	</Button>
 </div>
-
+ -->
 <style>
 	/* :global(body) {
 		background-color: red;
